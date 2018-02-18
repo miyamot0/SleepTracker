@@ -1,5 +1,42 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SleepTracker.Views.MenuPage">
-	<ContentPage.Content>
-	</ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="SleepTracker.Views.MenuPage"
+    BackgroundColor="{DynamicResource MainBackgroundColor}"
+    Title="Menu"
+    Icon="{Binding Icon}">
+    
+   <StackLayout VerticalOptions="FillAndExpand"
+                BackgroundColor="{DynamicResource MainBackgroundColor}">
+        
+     <ListView x:Name="ListViewMenu"
+            BackgroundColor="{DynamicResource MainBackgroundColor}"
+            SeparatorColor="{DynamicResource MainBackgroundColor}"
+            RefreshAllowed="true"
+            HasUnevenRows="True" >
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="0,10,0,10"
+                              BackgroundColor="{DynamicResource MainBackgroundColor}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Image Source="{Binding Icon}" 
+                                   HeightRequest="25" 
+                                   WidthRequest="25"/>
+                            <Label Grid.Column="1" 
+                                   Text="{Binding Title}"
+                                   TextColor="{DynamicResource MainTextColor}"
+                                   FontSize="Large"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+   </StackLayout>
 </ContentPage>

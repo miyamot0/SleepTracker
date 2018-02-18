@@ -1,5 +1,32 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SleepTracker.Pages.AboutPage">
-	<ContentPage.Content>
-	</ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="SleepTracker.Pages.AboutPage"
+    BackgroundColor="{DynamicResource MainBackgroundColor}"
+    Title="About">
+
+    <StackLayout Spacing="10">
+               
+        <Label Text="The Sleep Data Tracker" 
+               TextColor="{DynamicResource MainTextColor}"
+               HorizontalOptions="CenterAndExpand"
+               FontSize="Large"/>
+
+        <Label Text="This application was developed by Shawn Gilroy and released as a MIT-licensed open-source project. The source code necessary to re-create this application is hosted at ..."  
+               TextColor="{DynamicResource MainTextColor}"
+               FontSize="Default"/>
+
+        <Label Text="The Sleep Data Tracker uses the following open source projects:"  
+               TextColor="{DynamicResource MainTextColor}"
+               FontAttributes="Bold"
+               FontSize="Default"/>        
+
+        <Label Text="License 1"  
+               TextColor="{DynamicResource MainTextColor}"
+               FontSize="Default"/>
+
+        <Label Text="License 2"  
+               TextColor="{DynamicResource MainTextColor}"
+               FontSize="Default"/>        
+    </StackLayout>
 </ContentPage>

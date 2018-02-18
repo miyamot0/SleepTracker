@@ -1,5 +1,117 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SleepTracker.Pages.HelpPage">
-	<ContentPage.Content>
-	</ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="SleepTracker.Pages.HelpPage"
+    BackgroundColor="{DynamicResource MainBackgroundColor}"
+    Title="Help">
+
+    <ScrollView
+        HorizontalOptions="StartAndExpand"
+        VerticalOptions="StartAndExpand">
+        <StackLayout Spacing="10" VerticalOptions="StartAndExpand">
+            <Label Text="Using the Sleep Data Tracker"
+                   TextColor="{DynamicResource MainTextColor}"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Large"/>
+
+            <Label FontSize="Default" TextColor="{DynamicResource MainTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Record a new time sleeping: &#10;" FontAttributes="Bold" />
+                        <Span Text="Press &quot;Record Sleep&quot; in the menu and then press the &quot;Add&quot; button in the title bar. In the pop-up menu, select &quot;Sleep&quot;. You may need to add more than one slider, especially if there are multiple naps occurring." />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label FontSize="Default" TextColor="{DynamicResource MainTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="To edit sleeping time: &#10;" FontAttributes="Bold" />
+                        <Span Text="For each time asleep (i.e., nap, sleeping through the night), drag the beginning and the end of the sleep slider to match the start and end time of the sleep. If someone is getting up and then going back down, you should be using multiple sliders instead of a single one." />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label FontSize="Default" TextColor="{DynamicResource MainTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Record a new in bed/laying down (not necessarily sleeping): &#10;" FontAttributes="Bold" />
+                        <Span Text="Press &quot;Record Sleep&quot; in the menu and then press the &quot;Add&quot; button in the title bar. In the pop-up menu, select &quot;Bed&quot;. You may need to add more than one slider, especially if someone is laying down multiple times per day." />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label FontSize="Default" TextColor="{DynamicResource MainTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="To edit bed/laying down time: &#10;" FontAttributes="Bold" />
+                        <Span Text="For each time laying down (i.e., on couch, on bed), drag the beginning and the end of the slider to match the start and end time of their attempts to lay down. If someone is getting up and then going back down, you should be using multiple sliders instead of a single one." />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label FontSize="Default" TextColor="{DynamicResource MainTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="To interpret the daily sleep chart &#10;" FontAttributes="Bold" />
+                        <Span Text="The sleep chart divides a 24 hour day (6pm Yesterday to 6pm Today) blocks. Spans of Gray represent time actually asleep and arrow represent time laying out (i.e., going down, getting up, not necessarily sleeping). The sleep charts are saved and automatically updated whenever you add or edit the data included."/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label FontSize="Default" TextColor="{DynamicResource MainTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Viewing past sleep &#10;" FontAttributes="Bold" />
+                        <Span Text="This app allows you to see recorded sleep over the past week, two weeks, or month. To view the sleep data, select &quot;View Records&quot; from the main menu."/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label FontSize="Default" TextColor="{DynamicResource MainTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Viewing past sleep (various times) &#10;" FontAttributes="Bold" />
+                        <Span Text="You may, at your leisure, choose to view sleep over the past week or long. To view different lengths of time, select &quot;Change Range&quot; the menu bar and indicate how many days worth of sleep you'd like to view."/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label FontSize="Default" TextColor="{DynamicResource MainTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Change Display (Light/Dark Modes) &#10;" FontAttributes="Bold" />
+                        <Span Text="TODO"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label FontSize="Default" TextColor="{DynamicResource MainTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Backing Up Data &#10;" FontAttributes="Bold" />
+                        <Span Text="TODO"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+           
+            <Label FontSize="Default" TextColor="{DynamicResource MainTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Printing Sleep Data &#10;" FontAttributes="Bold" />
+                        <Span Text="TODO"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label FontSize="Default" TextColor="{DynamicResource MainTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Emailing Sleep Data &#10;" FontAttributes="Bold" />
+                        <Span Text="TODO"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

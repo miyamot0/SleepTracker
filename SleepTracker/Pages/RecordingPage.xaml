@@ -1,5 +1,64 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SleepTracker.Pages.RecordingPage">
-	<ContentPage.Content>
-	</ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    BackgroundColor="{DynamicResource MainBackgroundColor}"
+    x:Class="SleepTracker.Pages.RecordingPage"
+    Title="Recording">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="toolBarAdd"
+                     Text="Add" 
+                     Clicked="HandleAdditionsAsync"/>
+        <ToolbarItem x:Name="toolBarEdit"
+                     Text="Edit" 
+                     Clicked="ResetLayout"/>
+    </ContentPage.ToolbarItems>    
+    
+    <Grid x:Name = "recordingGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ScrollView 
+            Grid.Row="0"
+            Grid.Column="0">
+            <StackLayout>
+                <Label 
+                    x:Name="labelAsleep"
+                    Text="Time Spent Asleep:"
+                    TextColor="{DynamicResource MainTextColor}"
+                    Margin="0, 0, 0, 0"/>
+                
+                <StackLayout 
+                    x:Name="sleepStackLayout"
+                    Orientation="Vertical" 
+                    VerticalOptions="Start"
+                    Spacing="10" />
+
+                <Label 
+                    x:Name="labelBed"
+                    Text="Time Spent In Bed/Laying Down:"
+                    TextColor="{DynamicResource MainTextColor}"
+                    Margin="0, 10, 0, 0"/>
+                
+                <StackLayout 
+                    x:Name="bedStackLayout"
+                    Orientation="Vertical" 
+                    VerticalOptions="Start"
+                    Spacing="10" />            
+            </StackLayout>
+        </ScrollView>
+
+        <Button x:Name="editSliderButton"
+                Text="Save Sleep Data"                
+                Grid.Row="2"
+                Grid.Column="0"
+                Clicked="CommitCurrentAction"/>        
+    </Grid>
 </ContentPage>

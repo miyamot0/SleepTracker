@@ -1,15 +1,136 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Xamarin.Forms;
+using SkiaSharp;
+using SleepTracker.Interfaces;
+using System.Threading.Tasks;
+using SleepTracker.CustomViews;
+using System.Linq;
+using System.Diagnostics;
 
 namespace SleepTracker.Pages
 {
     public partial class ExportPage : ContentPage
     {
+
         public ExportPage()
         {
             InitializeComponent();
+        }
+
+        public static int Header = 125;
+        public static int MarginLeft = 150;
+        public int currentY = Header;
+
+        public void AddNewLine(int yDiff = 100)
+        {
+            currentY += yDiff;
+        }
+
+        async void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            var mBitMap = new SKBitmap(1600, 2200, isOpaque: false);
+            var font = SKTypeface.FromFamilyName("Arial");
+
+            var canvas = new SKCanvas(mBitMap);
+            canvas.Clear(SKColors.White);
+
+            var brush = new SKPaint
+            {
+                Typeface = font,
+                TextSize = 16f,
+                IsAntialias = true,
+                Color = SKColors.Black
+            };
+
+            for (int i = 0; i < 7; i++)
+            {
+                canvas.DrawText(DateTime.Now.AddDays(-i).ToString("yyyyMMdd"), MarginLeft, currentY, brush);
+                AddNewLine(22);
+
+                var view = await GenerateSleepImage(DateTime.Now.AddDays(-i).ToString("yyyyMMdd"));
+
+                if (view != null)
+                {
+                    Debug.WriteLine(view.ImgData == null);
+
+                    canvas.DrawImage(view.ImgData, MarginLeft, currentY, null);
+
+                    //35 diff
+
+                    AddNewLine(135);
+                }
+                else
+                {
+                    Debug.WriteLine("Null image");
+                }
+            }
+
+            canvas.Flush();
+
+            var image = SKImage.FromBitmap(mBitMap);
+            var data = image.Encode(SKEncodedImageFormat.Png, 90);
+
+            DependencyService.Get<InterfaceSaveLoad>().SaveTempImage(data, "results.png");
+        }
+
+        /// <summary>
+        /// Calculate the specified dateString.
+        /// </summary>
+        /// <returns>The calculate.</returns>
+        /// <param name="dateString">Date string.</param>
+        private async Task<SleepDiagramView> GenerateSleepView(string dateString)
+        {
+            var existingData = await App.Database.GetSleepRecordsAsync(dateString);
+
+            List<Tuple<double, double>> sleepingSpans = new List<Tuple<double, double>>();
+            List<Tuple<double, double>> downSpans = new List<Tuple<double, double>>();
+
+            if (existingData != null && existingData.Count > 0)
+            {
+                var sleepItems = existingData.Where(m => m.Type == Constants.Namings.SleepCode);
+
+                foreach (var item in sleepItems)
+                {
+                    sleepingSpans.Add(new Tuple<double, double>(item.Lower, item.Upper));
+                }
+
+                var downItems = existingData.Where(m => m.Type == Constants.Namings.DownCode);
+
+                foreach (var item in downItems)
+                {
+                    downSpans.Add(new Tuple<double, double>(item.Lower, item.Upper));
+                }
+            }
+
+            return new SleepDiagramView(sleepingSpans, downSpans);
+        }
+
+        private async Task<SleepDiagramView> GenerateSleepImage(string dateString)
+        {
+            var existingData = await App.Database.GetSleepRecordsAsync(dateString);
+
+            List<Tuple<double, double>> sleepingSpans = new List<Tuple<double, double>>();
+            List<Tuple<double, double>> downSpans = new List<Tuple<double, double>>();
+
+            if (existingData != null && existingData.Count > 0)
+            {
+                var sleepItems = existingData.Where(m => m.Type == Constants.Namings.SleepCode);
+
+                foreach (var item in sleepItems)
+                {
+                    sleepingSpans.Add(new Tuple<double, double>(item.Lower, item.Upper));
+                }
+
+                var downItems = existingData.Where(m => m.Type == Constants.Namings.DownCode);
+
+                foreach (var item in downItems)
+                {
+                    downSpans.Add(new Tuple<double, double>(item.Lower, item.Upper));
+                }
+            }
+
+            return new SleepDiagramView(sleepingSpans, downSpans, dateString);
         }
     }
 }

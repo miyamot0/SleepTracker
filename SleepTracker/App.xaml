@@ -1,6 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SleepTracker.App">
 	<Application.Resources>
-		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Color x:Key="MainBarBackgroundColor">#33302E</Color>
+            <Color x:Key="MainBarTextColor">White</Color>
+            <Color x:Key="MainBackgroundColor">White</Color>
+            <Color x:Key="MainTextColor">Black</Color>
+        </ResourceDictionary>
 	</Application.Resources>
 </Application>

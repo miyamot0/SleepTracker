@@ -1,5 +1,39 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SleepTracker.Pages.TitlePage">
-	<ContentPage.Content>
-	</ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="SleepTracker.Pages.TitlePage"
+    BackgroundColor="{DynamicResource MainBackgroundColor}"
+    Title="Home">
+
+    <ScrollView HorizontalOptions="StartAndExpand"
+        VerticalOptions="StartAndExpand">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+                   
+            <Label Text="Sleep Data Tracker (Version 1.0)" 
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="{DynamicResource MainTextColor}"
+                   FontSize="Large"/>
+
+            <Image Source="placeholder.png"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Aspect="AspectFit"/>
+
+            <Label Text="Sleep Data Tracker was designed to help parents and clinicians in collecting information related to the amount and quality of sleep. More specifically, it is designed to help simplify the recording of time spent in bed and time spent actually asleep." 
+                   TextColor="{DynamicResource MainTextColor}"
+                   Grid.Row="2"
+                   Grid.Column="0" />
+        </Grid>
+    </ScrollView>
 </ContentPage>
