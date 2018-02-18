@@ -1,6 +1,6 @@
-﻿/*
+The MIT License
 
-Copyright (c) 2018 Shawn Patrick Gilroy, www.smallnstats.com
+Copyright (c) 2010-2018 Google, Inc. http://angularjs.org
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,45 +20,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-*/
-
-using Xamarin.Forms;
-using System.Diagnostics;
-using SleepTracker.Helpers;
-
-namespace SleepTracker.Pages
-{
-    public partial class SettingsPage : ContentPage
-    {
-        private bool preparingView = true;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public SettingsPage()
-        {
-            InitializeComponent();
-
-            nightMode.IsToggled = App.IsInNightMode;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e)
-        {
-            if (preparingView)
-            {
-                preparingView = false;
-
-                return;
-            }
-
-            App.IsInNightMode = !App.IsInNightMode;
-
-            ViewTools.SetStyle(App.IsInNightMode);
-        }
-    }
-}

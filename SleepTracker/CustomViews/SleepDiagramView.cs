@@ -1,11 +1,34 @@
-﻿using System;
+﻿/*
+
+Copyright (c) 2018 Shawn Patrick Gilroy, www.smallnstats.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+*/
+
+using System;
 using System.Collections.Generic;
 using SkiaSharp.Views.Forms;
 using System.Linq;
 using SkiaSharp;
 using Xamarin.Forms;
 using SleepTracker.Helpers;
-using System.Diagnostics;
 
 namespace SleepTracker.CustomViews
 {
@@ -21,6 +44,10 @@ namespace SleepTracker.CustomViews
 
         public SKImage ImgData;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected virtual void OnDrawCompleted(EventArgs e)
         {
             if (DrawCompleted != null)
@@ -39,6 +66,11 @@ namespace SleepTracker.CustomViews
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sleepingSpans"></param>
+        /// <param name="downSpans"></param>
         public SleepDiagramView(List<SleepInstanceView> sleepingSpans, List<SleepInstanceView> downSpans)
         {
             SleepingSpans = sleepingSpans.ToList();
@@ -55,6 +87,11 @@ namespace SleepTracker.CustomViews
             };
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         void CanvasView_ReDraw(object sender, SKPaintSurfaceEventArgs args)
         {
             SKImageInfo info = args.Info;
@@ -176,6 +213,11 @@ namespace SleepTracker.CustomViews
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sleepingSpans"></param>
+        /// <param name="downSpans"></param>
         public SleepDiagramView(List<Tuple<double, double>> sleepingSpans, List<Tuple<double, double>> downSpans)
         {
             sleepingSpansTuple = sleepingSpans;
@@ -186,6 +228,11 @@ namespace SleepTracker.CustomViews
             PaintSurface += SleepDiagramView_PaintSurface;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         void SleepDiagramView_PaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
             SKImageInfo info = args.Info;
@@ -311,6 +358,12 @@ namespace SleepTracker.CustomViews
             OnDrawCompleted(new EventArgs());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sleepingSpans"></param>
+        /// <param name="downSpans"></param>
+        /// <param name="holder"></param>
         public SleepDiagramView(List<Tuple<double, double>> sleepingSpans, List<Tuple<double, double>> downSpans, string holder)
         {
             sleepingSpansTuple = sleepingSpans;
@@ -457,6 +510,11 @@ namespace SleepTracker.CustomViews
             OnDrawCompleted(new EventArgs());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static string GetTranslatedTime(int value)
         {
             int hourActual = 18 + value;

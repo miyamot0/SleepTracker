@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+
+Xamarin forms helper class for frame animations
+
+Copyright 2018. Marco Folio
+
+Pulled from https://github.com/marcofolio/ColorRating
+
+*/
+
+using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -8,6 +18,10 @@ namespace SleepTracker.Helpers
     {
         private static string ColorToHandle = "ColorTo";
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="view"></param>
         public static void CancelColorAnimations(Frame view)
         {
             if (view == null)
@@ -16,6 +30,14 @@ namespace SleepTracker.Helpers
             view.AbortAnimation(ColorToHandle);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="frame"></param>
+        /// <param name="toColor"></param>
+        /// <param name="length"></param>
+        /// <param name="easing"></param>
+        /// <returns></returns>
         public static Task<bool> ColorTo(this Frame frame, Color toColor, uint length = 250, Easing easing = null)
         {
             if (frame == null)
@@ -32,6 +54,13 @@ namespace SleepTracker.Helpers
             return tcs.Task;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="frame"></param>
+        /// <param name="startColor"></param>
+        /// <param name="toColor"></param>
+        /// <returns></returns>
         private static Action<double> AnimateColorCallback(Frame frame, Color startColor, Color toColor)
         {
             Func<double, Color> computeColor = progress =>
